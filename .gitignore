@@ -13,3 +13,10 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+composer.lock
+package-lock.json
+public/mix-manifest.json
+public/js
