@@ -13,7 +13,7 @@ class ArticlesRepository
         return Article::with('tags', 'user')
             ->where('is_active', true)
             ->orderBy('id', 'desc')
-            ->paginate(10);
+            ->paginate(5);
     }
 
     public function getArticle(int $id): Article|Model|null
