@@ -10,6 +10,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 255)->unique();
             $table->boolean('is_active')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->string('title', 256);

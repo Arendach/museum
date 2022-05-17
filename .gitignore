@@ -20,3 +20,4 @@ composer.lock
 package-lock.json
 public/mix-manifest.json
 public/js
+public/css

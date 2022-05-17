@@ -3,4 +3,8 @@ import app from './components/app.vue'
 
 export const eventBus = createApp(app)
 
-createApp(app).mount('#app')
+const application = createApp({})
+
+application
+    .component('app', app)
+    .mount('#app')

@@ -23,7 +23,7 @@ class ArticleResource extends JsonResource
             'description_en'       => $this->description_en,
             'created_at'           => $this->created_at,
             'updated_at'           => $this->updated_at,
-            'url'                  => url("article/{$this->id}"),
+            'url'                  => $this->getUrl(),
             'tags'                 => $this->whenLoaded('tags', TagResource::collection($this->tags)),
             'user'                 => $this->whenLoaded('user', new UserResource($this->user)),
         ];

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ArticleFactory extends Factory
 {
@@ -21,7 +22,8 @@ class ArticleFactory extends Factory
             'is_active'            => true,
             'created_at'           => now(),
             'updated_at'           => now(),
-            'user_id'              => 1
+            'user_id'              => 1,
+            'slug'                 => Str::slug($this->faker->text(rand(15, 45)))
         ];
     }
 }

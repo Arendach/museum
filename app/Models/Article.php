@@ -21,4 +21,9 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUrl(): string
+    {
+        return route('article', [$this->slug]);
+    }
 }

@@ -15,7 +15,7 @@ class TagResource extends JsonResource
             'title'      => $this->t('title'),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'url' => url("tag/$this->id")
+            'url'        => $this->getUrl(),
         ];
     }
 }

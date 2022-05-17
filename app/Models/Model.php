@@ -9,8 +9,14 @@ class Model extends BaseModel
     public function t(string $field): ?string
     {
         $locale = app()->getLocale();
-        $field = $locale == 'ua' ? $field : "{$field}_$locale";
+        $fieldLocal = $locale == 'ua' ? $field : "{$field}_$locale";
 
-        return $this->$field;
+        $content = $this->$fieldLocal;
+
+        if (!$content) {
+            return $this->$field;
+        }
+
+        return $content;
     }
 }

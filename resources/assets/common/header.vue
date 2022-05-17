@@ -3,7 +3,7 @@
         <div class="top-bar-left">
             <ul class="menu">
                 <li class="menu-text">
-                    Музей
+                    EVU.COM.UA
                 </li>
             </ul>
         </div>
@@ -19,6 +19,11 @@
 
 <script>
 export default {
-    name: 'header-menu'
+    name: 'header-menu',
+    props: {
+        title: {
+            type: String
+        }
+    }
 }
 </script>

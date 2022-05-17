@@ -13,6 +13,6 @@ class ArticlesSeeder extends Seeder
             return;
         }
 
-        Article::factory(10)->create();
+        Article::factory(20)->create();
     }
 }

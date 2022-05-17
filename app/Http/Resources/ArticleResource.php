@@ -17,7 +17,7 @@ class ArticleResource extends JsonResource
             'description'       => $this->t('description'),
             'created_at'        => $this->created_at->format('d.m.Y'),
             'updated_at'        => $this->updated_at,
-            'url'               => url("article/{$this->id}"),
+            'url'               => $this->getUrl(),
             'tags'              => $this->whenLoaded('tags', TagResource::collection($this->tags)),
             'user'              => $this->whenLoaded('user', new UserResource($this->user)),
         ];

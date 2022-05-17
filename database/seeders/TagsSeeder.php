@@ -17,19 +17,22 @@ class TagsSeeder extends Seeder
         Tag::create([
             'title'    => 'Війна',
             'title_ru' => 'Война',
-            'title_en' => 'War'
+            'title_en' => 'War',
+            'slug'     => 'war',
         ]);
 
         Tag::create([
             'title'    => 'Відео',
             'title_ru' => 'Видео',
-            'title_en' => 'Video'
+            'title_en' => 'Video',
+            'slug'     => 'video',
         ]);
 
         Tag::create([
             'title'    => 'Фото',
             'title_ru' => 'Фото',
-            'title_en' => 'Photo'
+            'title_en' => 'Photo',
+            'slug'     => 'photo'
         ]);
 
         $this->relationArticles();
@@ -41,7 +44,7 @@ class TagsSeeder extends Seeder
 
         Tag::all()->each(function (Tag $tag) use ($articles) {
             $articles->each(function (Article $article) use ($tag) {
-                if (rand(0, 1)){
+                if (rand(0, 1)) {
                     return;
                 }
 
