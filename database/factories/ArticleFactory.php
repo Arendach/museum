@@ -23,7 +23,7 @@ class ArticleFactory extends Factory
             'created_at'           => now(),
             'updated_at'           => now(),
             'user_id'              => 1,
-            'slug'                 => Str::slug($this->faker->text(rand(15, 45)))
+            'slug'                 => Str::slug($this->faker->text(rand(15, 45))),
         ];
     }
 }

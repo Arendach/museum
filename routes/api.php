@@ -9,7 +9,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('articles', [ArticlesController::class, 'getArticles']);
-Route::get('article/{id}', [ArticlesController::class, 'getArticle']);
+Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.articles');
+Route::get('article/{id}', [ArticlesController::class, 'getArticle'])->name('api.article');
 
-Route::get('tags', [TagsController::class, 'getTags']);
+Route::get('tags', [TagsController::class, 'getTags'])->name('api.tags');

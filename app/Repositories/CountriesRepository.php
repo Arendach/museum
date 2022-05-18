@@ -2,28 +2,20 @@
 
 namespace App\Repositories;
 
-use App\Models\Tag;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
-class TagsRepository
+class CountriesRepository
 {
-    public function getTags(): LengthAwarePaginator
+    public function getCountries(): Collection
     {
-        return Tag::paginate(10);
+        return Country::all();
     }
 
-    public function getAllTags(): Collection
+    public function findCountry(string $slug): Builder|Model|Country|null
     {
-        return Tag::all();
-    }
-
-    public function findTag(string $slug): Builder|Model|Tag|null
-    {
-        return Tag::with('articles')
-            ->where('slug', $slug)
-            ->first();
+        return Country::where('slug', $slug)->first();
     }
 }

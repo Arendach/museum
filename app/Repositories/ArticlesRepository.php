@@ -23,4 +23,12 @@ class ArticlesRepository
             ->where('is_active', true)
             ->first();
     }
+
+    public function findArticle(string $slug): Article|Model|null
+    {
+        return Article::with('tags', 'user')
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->first();
+    }
 }

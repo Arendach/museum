@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
@@ -12,3 +13,4 @@ Route::get('/', [HomeController::class, 'home'])
 Route::get('user/{id}', [UsersController::class, 'showUser'])->name('user');
 Route::get('article/{slug}', [ArticlesController::class, 'showArticle'])->name('article');
 Route::get('tag/{slug}', [TagsController::class, 'showTag'])->name('tag');
+Route::get('country/{slug}', [CountriesController::class, 'showCountry'])->name('country');

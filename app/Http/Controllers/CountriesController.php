@@ -2,33 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TagResource;
-use App\Repositories\TagsRepository;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use App\Repositories\CountriesRepository;
 use Illuminate\View\View;
 
-class TagsController extends Controller
+class CountriesController extends Controller
 {
-    private TagsRepository $repository;
+    private CountriesRepository $repository;
 
-    public function __construct(TagsRepository $repository)
+    public function __construct(CountriesRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function getTags(): AnonymousResourceCollection
+    public function showCountry(string $slug): View
     {
-        $tags = $this->repository->getTags();
+        $country = $this->repository->findCountry($slug);
 
-        return TagResource::collection($tags);
-    }
+        abort_if(!$country, 404);
 
-    public function showTag(string $slug): View
-    {
-        $tag = $this->repository->findTag($slug);
-
-        abort_if(!$tag, 404);
-
-        return view('pages.tag', compact('tag'));
+        return view('pages.country', compact('country'));
     }
 }

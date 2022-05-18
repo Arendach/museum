@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Admin\CountryResource;
 use App\Repositories\CountriesRepository;
-use Illuminate\View\View;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CountriesController extends Controller
 {
@@ -14,12 +16,10 @@ class CountriesController extends Controller
         $this->repository = $repository;
     }
 
-    public function showCountry(string $slug): View
+    public function getCountries(): AnonymousResourceCollection
     {
-        $country = $this->repository->findCountry($slug);
+        $countries = $this->repository->getCountries();
 
-        abort_if(!$country, 404);
-
-        return view('pages.tag', compact('country'));
+        return CountryResource::collection($countries);
     }
 }

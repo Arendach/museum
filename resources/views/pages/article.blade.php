@@ -2,6 +2,6 @@
 
 @section('content')
 
-    country -> {{ $country->t('title') }}
+    article -> {{ $article->t('title') }}
 
 @endsection

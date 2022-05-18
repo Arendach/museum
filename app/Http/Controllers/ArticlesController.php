@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ArticleResource;
 use App\Repositories\ArticlesRepository;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\View\View;
 
 class ArticlesController extends Controller
 {
@@ -27,5 +28,14 @@ class ArticlesController extends Controller
         $article = $this->repository->getArticle($id);
 
         return new ArticleResource($article);
+    }
+
+    public function showArticle(string $slug): View
+    {
+        $article = $this->repository->findArticle($slug);
+
+        abort_if(!$article, 404);
+
+        return view('pages.article', compact('article'));
     }
 }
