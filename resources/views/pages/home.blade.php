@@ -6,6 +6,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+                    <figure class="mb-50">
+                        <blockquote class="blockquote">
+                            <p class="text-primary">{{ $quote->t('title') }}</p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            {{ $quote->people->t('name') }}
+                        </figcaption>
+                    </figure>
+
                     @foreach($articles->take(10) as $article)
                         <div class="blog-list-item mb-30">
                             <h3>

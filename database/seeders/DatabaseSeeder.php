@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticlesSeeder::class);
         $this->call(TagsSeeder::class);
         $this->call(CountriesSeeder::class);
+        $this->call(PeoplesSeeder::class);
+        $this->call(QuotesSeeder::class);
     }
 }
