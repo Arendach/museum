@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-md">
                 <a class="navbar-brand" href="index.html">
-                    <img src="img/logo.png" alt="">
+                    <img src="/img/logo.png" alt="">
                 </a>
                 <button class="navbar-toggler"
                         type="button"
@@ -83,17 +83,14 @@
                                data-bs-toggle="dropdown"
                                aria-haspopup="true"
                                aria-expanded="false">
-                                Pages
+                                {{ LaravelLocalization::getCurrentLocaleNative() }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="pricing.html">Pricing</a>
-                                <a class="dropdown-item" href="team.html">Team</a>
-                                <a class="dropdown-item" href="faq.html">Faq</a>
-                                <a class="dropdown-item" href="testimonial.html">Testimonial</a>
-                                <a class="dropdown-item" href="gallery.html">Gallery</a>
-                                <a class="dropdown-item" href="404.html">404 Page</a>
-                                <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
-                                <a class="dropdown-item" href="contacts.html">Contact Us</a>
+                                @foreach(LaravelLocalization::getSupportedLocales() as $key => $locale)
+                                    <a class="dropdown-item" href="{{ LaravelLocalization::localizeURL(null, $key) }}">
+                                        {{ $locale['native'] }}
+                                    </a>
+                                @endforeach
                             </div>
                         </li>
                         <li class="nav-item nav-btn">

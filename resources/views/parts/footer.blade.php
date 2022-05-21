@@ -17,7 +17,7 @@
             <div class="row d-flex align-items-center">
                 <div class="col-lg-6 col-md-6 col-sm-6 mb-20">
                     <p class="copyright mb-0 text-lg-start text-md-start text-sm-start text-center">
-                        © <span class="copyright-year"></span> EVU.COM.UA {{ date('Y') }}
+                        © <span class="copyright-year"></span> {{ mb_strtoupper(request()->getHost()) }} {{ date('Y') }}
                     </p>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 text-lg-end text-md-end text-sm-end text-center mb-20">

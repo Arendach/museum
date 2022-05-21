@@ -36,6 +36,8 @@ class ArticlesController extends Controller
 
         abort_if(!$article, 404);
 
-        return view('pages.article', compact('article'));
+        $breadcrumbs = [[$article->t('title')]];
+
+        return view('pages.article', compact('article', 'breadcrumbs'));
     }
 }

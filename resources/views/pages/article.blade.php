@@ -2,6 +2,6 @@
 
 @section('content')
 
-    article -> {{ $article->t('title') }}
+    article -> {{ $article->t('description') }}
 
 @endsection

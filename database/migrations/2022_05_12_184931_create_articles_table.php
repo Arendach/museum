@@ -12,6 +12,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('slug', 255)->unique();
             $table->boolean('is_active')->default(false);
+            $table->boolean('is_popular')->default(false);
             $table->unsignedBigInteger('user_id');
             $table->string('title', 256);
             $table->string('title_ru', 256)->nullable();
