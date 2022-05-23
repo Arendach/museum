@@ -2,7 +2,6 @@
 
 namespace App\Http\Resources\Admin;
 
-use App\Http\Resources\PeopleResource;
 use App\Models\Quote;
 use Illuminate\Http\Resources\Json\JsonResource;
 

@@ -6,24 +6,26 @@ use App\Actions\Quotes\DeleteAction;
 use App\Actions\Quotes\UpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Quotes\UpdateRequest;
+use App\Http\Resources\Admin\PeopleResource;
 use App\Http\Resources\Admin\QuoteResource;
+use App\Models\People;
 use App\Models\Quote;
-use App\Repositories\QuotesRepository;
+use App\Repositories\PeoplesRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class QuotesController extends Controller
+class PeoplesController extends Controller
 {
-    public function getQuotes(QuotesRepository $repository): AnonymousResourceCollection
+    public function getPeoples(PeoplesRepository $repository): AnonymousResourceCollection
     {
-        $quotes = $repository->getQuotes();
+        $peoples = $repository->getPeoples();
 
-        return QuoteResource::collection($quotes);
+        return PeopleResource::collection($peoples);
     }
 
-    public function getQuote(Quote $quote): QuoteResource
+    public function getPeople(People $people): PeopleResource
     {
-        return new QuoteResource($quote);
+        return new PeopleResource($people);
     }
 
     public function update(UpdateRequest $request, UpdateAction $action, Quote $quote): JsonResponse

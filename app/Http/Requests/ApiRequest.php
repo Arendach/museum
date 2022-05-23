@@ -10,13 +10,4 @@ class ApiRequest extends FormRequest
     {
         return true;
     }
-
-    protected function mlField(string $field, array|string $rules): array
-    {
-        $result = [];
-        foreach (config('languages') as $item) {
-            $result[$field . $item['postfix']] = $rules;
-        }
-        return $result;
-    }
 }
