@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArticlesController;
 use App\Http\Controllers\Admin\CountriesController;
+use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
 
 Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.admin.articles');
@@ -11,3 +12,5 @@ Route::put('article/{id}', [ArticlesController::class, 'update'])->name('api.adm
 Route::get('tags', [TagsController::class, 'getTags'])->name('api.admin.tags');
 
 Route::get('countries', [CountriesController::class, 'getCountries'])->name('api.admin.countries');
+
+Route::get('quotes', [QuotesController::class, 'getQuotes'])->name('api.admin.quotes');
