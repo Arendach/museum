@@ -14,7 +14,8 @@ class PeopleResource extends JsonResource
             'id'      => $this->id,
             'name'    => $this->name,
             'name_ru' => $this->name_ru,
-            'name_en' => $this->name_en
+            'name_en' => $this->name_en,
+            'quotes'  => QuoteResource::collection($this->whenLoaded('quotes')),
         ];
     }
 }

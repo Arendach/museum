@@ -11,7 +11,6 @@ class Quote extends Model
 
     public $timestamps = false;
     protected $guarded = [];
-    protected $with = ['people'];
 
     public function people(): BelongsTo
     {

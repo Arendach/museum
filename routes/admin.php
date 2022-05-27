@@ -23,3 +23,4 @@ Route::get('peoples', [PeoplesController::class, 'getPeoples'])->name('api.admin
 Route::get('people/{people}', [PeoplesController::class, 'getPeople'])->name('api.admin.people');
 Route::put('people/{people}', [PeoplesController::class, 'update'])->name('api.admin.people.update');
 Route::delete('people/{people}', [PeoplesController::class, 'delete'])->name('api.admin.people.delete');
+Route::post('people/create', [PeoplesController::class, 'create'])->name('api.admin.people.create');

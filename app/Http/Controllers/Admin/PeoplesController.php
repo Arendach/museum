@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Quotes\DeleteAction;
-use App\Actions\Quotes\UpdateAction;
+use App\Actions\Peoples\CreateAction;
+use App\Actions\Peoples\DeleteAction;
+use App\Actions\Peoples\UpdateAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Quotes\UpdateRequest;
+use App\Http\Requests\Admin\Peoples\CreateRequest;
+use App\Http\Requests\Admin\Peoples\UpdateRequest;
 use App\Http\Resources\Admin\PeopleResource;
-use App\Http\Resources\Admin\QuoteResource;
 use App\Models\People;
 use App\Models\Quote;
 use App\Repositories\PeoplesRepository;
@@ -25,12 +26,21 @@ class PeoplesController extends Controller
 
     public function getPeople(People $people): PeopleResource
     {
+        $people->load('quotes');
+
         return new PeopleResource($people);
     }
 
-    public function update(UpdateRequest $request, UpdateAction $action, Quote $quote): JsonResponse
+    public function create(CreateRequest $request, CreateAction $action): PeopleResource
     {
-        $success = $action->run($quote, $request);
+        $people = $action->run($request);
+
+        return new PeopleResource($people);
+    }
+
+    public function update(UpdateRequest $request, UpdateAction $action, People $people): JsonResponse
+    {
+        $success = $action->run($people, $request);
 
         return $this->json(compact('success'));
     }

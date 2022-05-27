@@ -16,7 +16,7 @@ class QuoteResource extends JsonResource
             'title_ru'   => $this->title_ru,
             'title_en'   => $this->title_en,
             'created_at' => $this->created_at,
-            'people'     => $this->whenLoaded('people', new PeopleResource($this->people))
+            'people'     => new PeopleResource($this->whenLoaded('people')),
         ];
     }
 }
