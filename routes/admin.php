@@ -18,6 +18,7 @@ Route::get('quotes', [QuotesController::class, 'getQuotes'])->name('api.admin.qu
 Route::get('quote/{quote}', [QuotesController::class, 'getQuote'])->name('api.admin.quote');
 Route::put('quote/{quote}', [QuotesController::class, 'update'])->name('api.admin.quote.update');
 Route::delete('quote/{quote}', [QuotesController::class, 'delete'])->name('api.admin.quote.delete');
+Route::post('quote/create', [QuotesController::class, 'create'])->name('api.admin.quote.create');
 
 Route::get('peoples', [PeoplesController::class, 'getPeoples'])->name('api.admin.peoples');
 Route::get('people/{people}', [PeoplesController::class, 'getPeople'])->name('api.admin.people');

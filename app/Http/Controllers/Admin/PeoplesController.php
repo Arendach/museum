@@ -12,6 +12,7 @@ use App\Http\Resources\Admin\PeopleResource;
 use App\Models\People;
 use App\Models\Quote;
 use App\Repositories\PeoplesRepository;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -26,7 +27,7 @@ class PeoplesController extends Controller
 
     public function getPeople(People $people): PeopleResource
     {
-        $people->load('quotes');
+        $people->load(['quotes' => fn(HasMany $builder) => $builder->orderByDesc('id')]);
 
         return new PeopleResource($people);
     }

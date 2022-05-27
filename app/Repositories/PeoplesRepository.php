@@ -9,6 +9,9 @@ class PeoplesRepository
 {
     public function getPeoples(): LengthAwarePaginator
     {
-        return People::orderByDesc('id')->paginate(request('limit', 10));
+        return People::orderByDesc('id')
+            ->paginate(
+                request()->getPaginationLimit()
+            );
     }
 }

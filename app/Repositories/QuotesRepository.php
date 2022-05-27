@@ -12,7 +12,9 @@ class QuotesRepository
     {
         return Quote::with('people')
             ->orderBy('id', 'desc')
-            ->paginate(request('limit', 10));
+            ->paginate(
+                request()->getPaginationLimit()
+            );
     }
 
     public function getQuote(int $id): Quote|Model|null

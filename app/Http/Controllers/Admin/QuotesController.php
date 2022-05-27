@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Quotes\CreateAction;
 use App\Actions\Quotes\DeleteAction;
 use App\Actions\Quotes\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Quotes\CreateRequest;
 use App\Http\Requests\Admin\Quotes\UpdateRequest;
 use App\Http\Resources\Admin\QuoteResource;
 use App\Models\Quote;
@@ -23,6 +25,13 @@ class QuotesController extends Controller
 
     public function getQuote(Quote $quote): QuoteResource
     {
+        return new QuoteResource($quote);
+    }
+
+    public function create(CreateRequest $request, CreateAction $action): QuoteResource
+    {
+        $quote = $action->run($request);
+
         return new QuoteResource($quote);
     }
 

@@ -175,6 +175,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ObserverServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
+        App\Providers\RequestMacroServiceProvider::class,
 
     ],
 
