@@ -25,6 +25,8 @@ class QuotesController extends Controller
 
     public function getQuote(Quote $quote): QuoteResource
     {
+        $quote->load('people');
+
         return new QuoteResource($quote);
     }
 

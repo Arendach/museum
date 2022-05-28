@@ -27,7 +27,10 @@ class PeoplesController extends Controller
 
     public function getPeople(People $people): PeopleResource
     {
-        $people->load(['quotes' => fn(HasMany $builder) => $builder->orderByDesc('id')]);
+        $people->load([
+            'country',
+            'quotes' => fn(HasMany $builder) => $builder->orderByDesc('id')
+        ]);
 
         return new PeopleResource($people);
     }
