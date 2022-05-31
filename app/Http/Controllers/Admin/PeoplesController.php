@@ -22,6 +22,8 @@ class PeoplesController extends Controller
     {
         $peoples = $repository->getPeoples();
 
+        $peoples->load('country');
+
         return PeopleResource::collection($peoples);
     }
 

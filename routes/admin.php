@@ -13,6 +13,10 @@ Route::put('article/{id}', [ArticlesController::class, 'update'])->name('api.adm
 Route::get('tags', [TagsController::class, 'getTags'])->name('api.admin.tags');
 
 Route::get('countries', [CountriesController::class, 'getCountries'])->name('api.admin.countries');
+Route::get('country/{country}', [CountriesController::class, 'getCountry'])->name('api.admin.country');
+Route::put('country/{country}', [CountriesController::class, 'update'])->name('api.admin.country.update');
+Route::delete('country/{country}', [CountriesController::class, 'delete'])->name('api.admin.country.delete');
+Route::post('country', [CountriesController::class, 'create'])->name('api.admin.country.create');
 
 Route::get('quotes', [QuotesController::class, 'getQuotes'])->name('api.admin.quotes');
 Route::get('quote/{quote}', [QuotesController::class, 'getQuote'])->name('api.admin.quote');
