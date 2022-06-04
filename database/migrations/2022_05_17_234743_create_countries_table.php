@@ -18,7 +18,11 @@ class CreateCountriesTable extends Migration
             $table->longText('description_en')->nullable();
             $table->string('code', 5)->unique();
             $table->string('slug', 255)->unique();
-            $table->set('status', ['friend', 'enemy', 'neutral']);
+            if (config('app.env') === 'testing'){
+                $table->string('status', 255)->default('neutral');
+            } else {
+                $table->set('status', ['friend', 'enemy', 'neutral']);
+            }
         });
     }
 

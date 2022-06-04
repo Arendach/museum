@@ -12,7 +12,7 @@ Route::put('article/{article}', [ArticlesController::class, 'update'])->name('ap
 Route::post('article', [ArticlesController::class, 'create'])->name('api.admin.article.create');
 Route::delete('article/{article}', [ArticlesController::class, 'delete'])->name('api.admin.article.delete');
 
-Route::get('tags', [TagsController::class, 'getTags'])->name('api.admin.tags');
+Route::apiResource('tags', TagsController::class, ['as' => 'api.admin']);
 
 Route::get('countries', [CountriesController::class, 'getCountries'])->name('api.admin.countries');
 Route::get('country/{country}', [CountriesController::class, 'getCountry'])->name('api.admin.country');

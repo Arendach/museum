@@ -8,14 +8,20 @@ use Cache;
 class DictionaryService
 {
     private array|null $dictionary;
+    private bool $isTesting;
 
     public function __construct()
     {
+        $this->isTesting = config('app.env') === 'testing';
         $this->dictionary = $this->loadDictionary();
     }
 
     public function get(string $phrase, array $replacements = []): ?string
     {
+        if ($this->isTesting) {
+            return $phrase;
+        }
+
         $phrase = $this->getPhrase($phrase);
 
         return $this->replacement($phrase, $replacements);
@@ -23,6 +29,10 @@ class DictionaryService
 
     private function loadDictionary(): ?array
     {
+        if ($this->isTesting) {
+            return [];
+        }
+
         $locale = app()->getLocale();
 
         return Cache::rememberForever("translations_$locale", function () {

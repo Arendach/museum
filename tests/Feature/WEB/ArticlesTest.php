@@ -9,7 +9,7 @@ class ArticlesTest extends TestCase
 {
     public function testShow(): void
     {
-        $article = Article::first();
+        $article = Article::factory()->create(['is_active' => true]);
 
         $this
             ->get(route('article', [$article->slug]))

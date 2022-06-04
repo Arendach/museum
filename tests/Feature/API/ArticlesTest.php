@@ -9,7 +9,7 @@ class ArticlesTest extends TestCase
 {
     public function testGetArticle(): void
     {
-        $article = Article::first();
+        $article = Article::factory()->create(['is_active' => true]);
 
         $this
             ->get(route('api.article', [$article->id]))
@@ -19,7 +19,7 @@ class ArticlesTest extends TestCase
 
     public function testGetArticles(): void
     {
-        $article = Article::orderByDesc('id')->first();
+        $article = Article::orderByDesc('id')->where('is_active', true)->first();
 
         $this
             ->get(route('api.articles'))
