@@ -12,5 +12,13 @@ class RequestMacroServiceProvider extends ServiceProvider
         Request::macro('getPaginationLimit', function (): int {
             return (int)$this->header('X-Pagination-Limit', config('api.pagination_limit'));
         });
+
+        Request::macro('getOrderDirection', function (): string {
+            return $this->header('X-Order-Direction', config('api.order_direction'));
+        });
+
+        Request::macro('getOrderField', function (): string {
+            return $this->header('X-Order-Field', config('api.order_field'));
+        });
     }
 }

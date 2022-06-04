@@ -7,8 +7,10 @@ use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
 
 Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.admin.articles');
-Route::get('article/{id}', [ArticlesController::class, 'getArticle'])->name('api.admin.article');
-Route::put('article/{id}', [ArticlesController::class, 'update'])->name('api.admin.article.update');
+Route::get('article/{article}', [ArticlesController::class, 'getArticle'])->name('api.admin.article');
+Route::put('article/{article}', [ArticlesController::class, 'update'])->name('api.admin.article.update');
+Route::post('article', [ArticlesController::class, 'create'])->name('api.admin.article.create');
+Route::delete('article/{article}', [ArticlesController::class, 'delete'])->name('api.admin.article.delete');
 
 Route::get('tags', [TagsController::class, 'getTags'])->name('api.admin.tags');
 

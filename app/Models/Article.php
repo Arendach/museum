@@ -12,6 +12,11 @@ class Article extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'is_active'  => 'boolean',
+        'is_popular' => 'boolean',
+    ];
+
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');

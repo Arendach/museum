@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Articles\CreateAction;
+use App\Actions\Articles\DeleteAction;
+use App\Actions\Articles\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Articles\CreateRequest;
 use App\Http\Requests\Admin\Articles\UpdateRequest;
 use App\Http\Resources\Admin\ArticleResource;
 use App\Models\Article;
-use App\Repositories\ArticlesRepository;
+use App\Repositories\Admin\ArticlesRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -26,30 +30,31 @@ class ArticlesController extends Controller
         return ArticleResource::collection($articles);
     }
 
-    public function getArticle(int $id): ArticleResource
+    public function getArticle(Article $article): ArticleResource
     {
-        $article = $this->repository->getArticle($id);
+        $article->load('user', 'tags');
 
         return new ArticleResource($article);
     }
 
-    public function update(UpdateRequest $request, int $id)
+    public function create(CreateRequest $request, CreateAction $action): ArticleResource
     {
-        $article = $this->repository->getArticle($id);
+        $article = $action->run($request);
 
-        $article->update($request->getData());
-
-        $article->tags()->sync($request->getTags());
-
-        return response()->json([
-            'success' => true
-        ]);
+        return new ArticleResource($article);
     }
 
-    public function delete(int $id): JsonResponse
+    public function update(Article $article, UpdateAction $action, UpdateRequest $request)
     {
-        Article::where('id', $id)->delete();
+        $success = $action->run($article, $request);
 
-        return response()->json(['success' => true]);
+        return $this->json(compact('success'));
+    }
+
+    public function delete(Article $article, DeleteAction $action): JsonResponse
+    {
+        $success = $action->run($article);
+
+        return $this->json(compact('success'));
     }
 }
