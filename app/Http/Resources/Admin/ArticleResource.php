@@ -29,6 +29,7 @@ class ArticleResource extends JsonResource
             'url'                  => $this->getUrl(),
             'tags'                 => $this->whenLoaded('tags', TagResource::collection($this->tags)),
             'user'                 => $this->whenLoaded('user', new UserResource($this->user)),
+            'picture'              => $this->whenLoaded('picture', new PictureResource($this->picture)),
         ];
     }
 }

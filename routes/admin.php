@@ -11,6 +11,7 @@ Route::get('article/{article}', [ArticlesController::class, 'getArticle'])->name
 Route::put('article/{article}', [ArticlesController::class, 'update'])->name('api.admin.article.update');
 Route::post('article', [ArticlesController::class, 'create'])->name('api.admin.article.create');
 Route::delete('article/{article}', [ArticlesController::class, 'delete'])->name('api.admin.article.delete');
+Route::post('articles/change-picture/{article}', [ArticlesController::class, 'changePicture'])->name('api.admin.article.change-picture');
 
 Route::apiResource('tags', TagsController::class, ['as' => 'api.admin']);
 

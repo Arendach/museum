@@ -2,6 +2,14 @@
 
 @section('content')
 
-    article -> {{ $article->t('description') }}
+    <h2>{{ $article->t('title') }}</h2>
+
+    <hr>
+
+    <figure>
+        <img src="{{ $article->getPicture() }}" alt="">
+    </figure>
+
+    {!! $article->t('description') !!}
 
 @endsection

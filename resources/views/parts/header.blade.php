@@ -2,7 +2,7 @@
     <div class="header-lover">
         <div class="container">
             <nav class="navbar navbar-expand-md">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="/img/logo.png" alt="">
                 </a>
                 <button class="navbar-toggler"

@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    @foreach($articles->take(10) as $article)
+    @foreach($articles as $article)
         <div class="blog-list-item mb-30">
             <h3>
                 <a href="{{ $article->getUrl() }}">
@@ -25,9 +25,13 @@
                     <i class="far fa-comments"></i> <a href="#">06 Comments</a>
                 </li>
             </ul>
-            <div class="post-media"><a href="#">
-                    <figure><img src="img/blog/list-img-1.jpg" alt=""></figure>
-                </a></div>
+            <div class="post-media">
+                <a href="{{ $article->getUrl() }}">
+                    <figure>
+                        <img src="{{ $article->getPicture() }}" alt="">
+                    </figure>
+                </a>
+            </div>
             <p>{!! $article->t('description') !!}</p>
             <a href="{{ $article->getUrl() }}" class="btn-style-1">
                 {{ translate('Читати дальше') }}

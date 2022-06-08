@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Articles\ChangePictureAction;
 use App\Actions\Articles\CreateAction;
 use App\Actions\Articles\DeleteAction;
 use App\Actions\Articles\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Articles\ChangePictureRequest;
 use App\Http\Requests\Admin\Articles\CreateRequest;
 use App\Http\Requests\Admin\Articles\UpdateRequest;
 use App\Http\Resources\Admin\ArticleResource;
+use App\Http\Resources\Admin\PictureResource;
 use App\Models\Article;
 use App\Repositories\Admin\ArticlesRepository;
 use Illuminate\Http\JsonResponse;
@@ -32,7 +35,7 @@ class ArticlesController extends Controller
 
     public function getArticle(Article $article): ArticleResource
     {
-        $article->load('user', 'tags');
+        $article->load('user', 'tags', 'picture');
 
         return new ArticleResource($article);
     }
@@ -56,5 +59,12 @@ class ArticlesController extends Controller
         $success = $action->run($article);
 
         return $this->json(compact('success'));
+    }
+
+    public function changePicture(Article $article, ChangePictureAction $action, ChangePictureRequest $request): PictureResource
+    {
+        $picture = $action->run($article, $request);
+
+        return new PictureResource($picture);
     }
 }
