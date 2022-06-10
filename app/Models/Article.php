@@ -12,7 +12,7 @@ class Article extends Model
     use HasFactory;
     use PictureTrait;
 
-    protected $guarded = [];
+    public $timestamps = true;
 
     protected $casts = [
         'is_active'  => 'boolean',

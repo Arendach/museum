@@ -10,10 +10,6 @@ class People extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-    protected $guarded = [];
-    protected $table = 'peoples';
-
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
