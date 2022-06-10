@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CountriesController;
 use App\Http\Controllers\Admin\PeoplesController;
 use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\WeaponsController;
 
 Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.admin.articles');
 Route::get('article/{article}', [ArticlesController::class, 'getArticle'])->name('api.admin.article');
@@ -14,6 +15,7 @@ Route::delete('article/{article}', [ArticlesController::class, 'delete'])->name(
 Route::post('articles/change-picture/{article}', [ArticlesController::class, 'changePicture'])->name('api.admin.article.change-picture');
 
 Route::apiResource('tags', TagsController::class, ['as' => 'api.admin']);
+Route::apiResource('weapons', WeaponsController::class, ['as' => 'api.admin']);
 
 Route::get('countries', [CountriesController::class, 'getCountries'])->name('api.admin.countries');
 Route::get('country/{country}', [CountriesController::class, 'getCountry'])->name('api.admin.country');

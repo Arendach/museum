@@ -15,4 +15,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('article/{slug}', [ArticlesController::class, 'showArticle'])->name('article');
     Route::get('tag/{slug}', [TagsController::class, 'showTag'])->name('tag');
     Route::get('country/{slug}', [CountriesController::class, 'showCountry'])->name('country');
+    Route::get('weapon/{weapon}', [])->name('weapon');
 });
