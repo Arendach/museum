@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\RequestFilter\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +20,10 @@ class RequestMacroServiceProvider extends ServiceProvider
 
         Request::macro('getOrderField', function (): string {
             return $this->header('X-Order-Field', config('api.order_field'));
+        });
+
+        Request::macro('filters', function (): Collection {
+            return new Collection($this->get('filters', []));
         });
     }
 }

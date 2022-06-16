@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CountriesController;
 use App\Http\Controllers\Admin\PeoplesController;
 use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\VideosController;
 use App\Http\Controllers\Admin\WeaponsController;
 
 Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.admin.articles');
@@ -34,3 +35,6 @@ Route::get('people/{people}', [PeoplesController::class, 'getPeople'])->name('ap
 Route::put('people/{people}', [PeoplesController::class, 'update'])->name('api.admin.people.update');
 Route::delete('people/{people}', [PeoplesController::class, 'delete'])->name('api.admin.people.delete');
 Route::post('people/create', [PeoplesController::class, 'create'])->name('api.admin.people.create');
+
+Route::get('videos', [VideosController::class, 'index']);
+Route::get('videos/related', [VideosController::class, 'related'])->name('api.admin.videos.related');

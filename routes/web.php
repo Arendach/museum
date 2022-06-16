@@ -7,6 +7,14 @@ use App\Http\Controllers\TagsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('test', function () {
+
+    $videos = \App\Models\Article::where('id', 21)->first()->videos;
+
+
+    dd($videos);
+});
+
 Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 
     Route::get('/', [HomeController::class, 'home'])->name('home');

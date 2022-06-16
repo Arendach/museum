@@ -11,7 +11,7 @@ use App\Http\Requests\Admin\Countries\CreateRequest;
 use App\Http\Resources\Admin\CountryResource;
 use App\Http\Resources\Admin\QuoteResource;
 use App\Models\Country;
-use App\Repositories\CountriesRepository;
+use App\Repositories\Admin\CountriesRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -26,7 +26,7 @@ class CountriesController extends Controller
 
     public function getCountries(): AnonymousResourceCollection
     {
-        $countries = $this->repository->getCountries();
+        $countries = $this->repository->getItems();
 
         return CountryResource::collection($countries);
     }

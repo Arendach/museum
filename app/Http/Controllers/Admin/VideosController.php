@@ -8,26 +8,32 @@ use App\Actions\Weapons\UpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Weapons\CreateRequest;
 use App\Http\Requests\Admin\Weapons\UpdateRequest;
+use App\Http\Resources\Admin\VideoResource;
 use App\Http\Resources\Admin\WeaponResource;
 use App\Models\Weapon;
-use App\Repositories\Admin\WeaponsRepository;
+use App\Repositories\Admin\VideosRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class WeaponsController extends Controller
+class VideosController extends Controller
 {
-    private WeaponsRepository $repository;
+    private VideosRepository $repository;
 
-    public function __construct(WeaponsRepository $repository)
+    public function __construct(VideosRepository $repository)
     {
         $this->repository = $repository;
     }
 
+    public function related()
+    {
+
+    }
+
     public function index(): AnonymousResourceCollection
     {
-        $tags = $this->repository->getWeapons();
+        $videos = $this->repository->getItemsPaginate();
 
-        return WeaponResource::collection($tags);
+        return VideoResource::collection($videos);
     }
 
     public function store(CreateRequest $request, CreateAction $action): WeaponResource

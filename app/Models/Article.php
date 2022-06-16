@@ -29,6 +29,11 @@ class Article extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function videos(): MorphToMany
+    {
+        return $this->morphToMany(Video::class, 'related', 'video_relations');
+    }
+
     public function getUrl(): string
     {
         return route('article', [$this->slug]);

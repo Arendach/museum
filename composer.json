@@ -2,7 +2,10 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
@@ -13,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "mcamara/laravel-localization": "^1.7",
         "stichoza/google-translate-php": "^4.1",
-        "symfony/dom-crawler": "^6.0"
+        "symfony/dom-crawler": "^6.0",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
