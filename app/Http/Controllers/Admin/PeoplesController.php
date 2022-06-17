@@ -31,7 +31,8 @@ class PeoplesController extends Controller
     {
         $people->load([
             'country',
-            'quotes' => fn(HasMany $builder) => $builder->orderByDesc('id')
+            'quotes' => fn(HasMany $builder) => $builder->orderByDesc('id'),
+            'picture',
         ]);
 
         return new PeopleResource($people);

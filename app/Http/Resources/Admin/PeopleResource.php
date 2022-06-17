@@ -18,6 +18,7 @@ class PeopleResource extends JsonResource
             'country_id' => $this->country_id,
             'country'    => new CountryResource($this->whenLoaded('country')),
             'quotes'     => QuoteResource::collection($this->whenLoaded('quotes')),
+            'picture'    => new PictureResource($this->whenLoaded('picture')),
         ];
     }
 }
