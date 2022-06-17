@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as BaseModel;
+use Symfony\Component\DomCrawler\Crawler;
 
 class Model extends BaseModel
 {
@@ -21,5 +22,16 @@ class Model extends BaseModel
         }
 
         return $content;
+    }
+
+    public function firstParagraph(string $field): ?string
+    {
+        $content = $this->t($field);
+
+        try {
+            return (new Crawler($content))->filter('p')->first()->outerHtml();
+        } catch (\Throwable $exception) {
+            return null;
+        }
     }
 }

@@ -24,7 +24,7 @@
                 </div>
                 <div class="row">
                     @foreach($country->weapons as $weapon)
-                        <div class="col-lg-4 col-md-6 mb-30">
+                        <div class="col-lg-6 col-md-6 col-sm-12 mb-30">
                             <div class="blog-item">
                                 <h3><a href="#">{{ $weapon->t('title') }}</a></h3>
                                 <time class="post-classic-time mt-12 mb-20">
@@ -35,7 +35,7 @@
                                     <div class="hover d-flex justify-content-center align-items-center"></div>
                                 </div>
                                 <div class="blog-item-des">
-                                    {!! $weapon->t('description') !!}
+                                    {!! $weapon->firstParagraph('description') !!}
                                     <ul class="blog-modern-meta">
                                         <li>
                                             <a href="{{ $weapon->getUrl() }}" class="btn-style-1 btn-sm text-white">
