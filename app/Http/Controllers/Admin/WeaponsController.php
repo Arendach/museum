@@ -25,7 +25,7 @@ class WeaponsController extends Controller
 
     public function index(): AnonymousResourceCollection
     {
-        $tags = $this->repository->getWeapons();
+        $tags = $this->repository->with('countries', 'picture')->getItems();
 
         return WeaponResource::collection($tags);
     }

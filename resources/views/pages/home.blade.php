@@ -21,9 +21,6 @@
                     @endforeach
 
                 </li>
-                <li class="list-inline-item">
-                    <i class="far fa-comments"></i> <a href="#">06 Comments</a>
-                </li>
             </ul>
             <div class="post-media">
                 <a href="{{ $article->getUrl() }}">
@@ -32,7 +29,7 @@
                     </figure>
                 </a>
             </div>
-            <p>{!! $article->t('description') !!}</p>
+            <p>{!! $article->t('short_description') !!}</p>
             <a href="{{ $article->getUrl() }}" class="btn-style-1">
                 {{ translate('Читати дальше') }}
             </a>

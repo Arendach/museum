@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ArticleResource;
-use App\Models\Article;
 use App\Repositories\ArticlesRepository;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\View\View;
@@ -37,8 +36,9 @@ class ArticlesController extends Controller
 
         abort_if(!$article, 404);
 
-        $breadcrumbs = [[$article->t('title')]];
+        $title = $article->t('title');
+        $breadcrumbs = [[$title]];
 
-        return view('pages.article', compact('article', 'breadcrumbs'));
+        return view('pages.article', compact('article', 'title', 'breadcrumbs'));
     }
 }

@@ -32,26 +32,6 @@
         </div>
     </div>
 
-    <div class="blog-aside-item mb-40">
-        <div class="blog-aside-item-inner">
-            <h4 class="widget-title">Archive</h4>
-            <ul class="archive-list">
-                <li class="active"><a href="#">January <span class="copyright-year"></span></a></li>
-                <li><a href="#">February <span class="copyright-year"></span></a></li>
-                <li><a href="#">March <span class="copyright-year"></span></a></li>
-                <li><a href="#">April <span class="copyright-year"></span></a></li>
-                <li><a href="#">May <span class="copyright-year"></span></a></li>
-                <li><a href="#">June <span class="copyright-year"></span></a></li>
-                <li><a href="#">July <span class="copyright-year"></span></a></li>
-                <li><a href="#">August <span class="copyright-year"></span></a></li>
-                <li><a href="#">September <span class="copyright-year"></span></a></li>
-                <li><a href="#">October <span class="copyright-year"></span></a></li>
-                <li><a href="#">November <span class="copyright-year"></span></a></li>
-                <li><a href="#">December <span class="copyright-year"></span></a></li>
-            </ul>
-        </div>
-    </div>
-
     @if($popularArticles->count())
         <div class="blog-aside-item mb-40">
             <div class="blog-aside-item-inner">
@@ -61,7 +41,7 @@
                 @foreach($popularArticles as $article)
                     <div class="recent-post flex-row">
                         <div class="recent-post-left">
-                            <img class="img-fluid" src="img/blog/post-01.jpg" width="80" height="80" alt="">
+                            <img class="img-fluid" src="{{ $article->getPicture() }}" width="80" height="80" alt="">
                         </div>
                         <div class="recent-post-body">
                             <h6><a href="#">{{ $article->t('title') }}</a></h6>
@@ -88,7 +68,7 @@
         <div class="blog-aside-item-inner">
             <h4 class="widget-title">{{ translate('Підписка на новини') }}</h4>
             <form class="side-newsletter">
-                <input class="form-control rounded-0 mb-6 border-0" type="email">
+                <input class="form-control rounded-0 mb-6 border-0" type="email" placeholder="{{ translate('Введіть Ваш E-Mail') }}">
                 <button class="btn-style-1 w-100 rounded-0" type="submit">{{ translate('підписатись') }}</button>
             </form>
         </div>
@@ -96,7 +76,7 @@
 
     <div class="blog-aside-item mb-30">
         <div class="blog-aside-item-inner">
-            <h4 class="widget-title">Теги</h4>
+            <h4 class="widget-title">{{ translate('Теги') }}</h4>
             <div class="tag-list">
                 @foreach($tags as $tag)
                     <a href="{{ $tag->getUrl() }}">

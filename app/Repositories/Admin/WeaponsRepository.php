@@ -3,17 +3,8 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Weapon;
-use Illuminate\Support\Collection;
-use Request;
 
-class WeaponsRepository
+class WeaponsRepository extends AdminRepository
 {
-    public function getWeapons(): Collection
-    {
-        return Weapon::with('countries', 'picture')
-            ->orderBy(
-                Request::getOrderField(),
-                Request::getOrderDirection(),
-            )->get();
-    }
+    protected string $model = Weapon::class;
 }

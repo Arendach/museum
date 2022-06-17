@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Repositories\CountriesRepository;
 use Illuminate\View\View;
 
@@ -14,12 +15,13 @@ class CountriesController extends Controller
         $this->repository = $repository;
     }
 
-    public function showCountry(string $slug): View
+    public function index(Country $country): View
     {
-        $country = $this->repository->findCountry($slug);
+        $country->load('weapons');
 
-        abort_if(!$country, 404);
+        $title = $country->t('title');
+        $breadcrumbs = [[$title]];
 
-        return view('pages.country', compact('country'));
+        return view('pages.country', compact('country', 'title', 'breadcrumbs'));
     }
 }

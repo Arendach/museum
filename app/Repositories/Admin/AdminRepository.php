@@ -32,6 +32,13 @@ abstract class AdminRepository
         );
     }
 
+    final public function with(...$items): self
+    {
+        $this->with = $items;
+
+        return $this;
+    }
+
     private function prepareRequest(): Builder
     {
         return $this->builder->with($this->with)

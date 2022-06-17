@@ -7,7 +7,7 @@
     <hr>
 
     <figure>
-        <img src="{{ $article->getPicture() }}" alt="">
+        <img src="{{ $article->getPicture() }}" alt="{{ $article->t('title') }}">
     </figure>
 
     {!! $article->t('description') !!}
