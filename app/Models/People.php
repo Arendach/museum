@@ -23,4 +23,9 @@ class People extends Model
     {
         return $this->hasMany(Quote::class);
     }
+
+    public function getUrl(): string
+    {
+        return route('people', [$this->id]);
+    }
 }

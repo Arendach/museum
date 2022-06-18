@@ -17,7 +17,7 @@ class CountriesController extends Controller
 
     public function index(Country $country): View
     {
-        $country->load('weapons');
+        $country->load('weapons', 'peoples');
 
         $title = $country->t('title');
         $breadcrumbs = [[$title]];
