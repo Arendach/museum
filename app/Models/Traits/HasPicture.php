@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /** @mixin Model */
-trait PictureTrait
+trait HasPicture
 {
     public function picture(): MorphOne
     {

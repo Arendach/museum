@@ -2,15 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Contracts\HasPictureContract;
+use App\Models\Contracts\HasVideoContract;
+use App\Models\Traits\HasVideos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
-use App\Models\Traits\PictureTrait;
+use App\Models\Traits\HasPicture;
 
-class Article extends Model
+class Article extends Model implements HasVideoContract, HasPictureContract
 {
     use HasFactory;
-    use PictureTrait;
+    use HasPicture;
+    use HasVideos;
 
     public $timestamps = true;
 

@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\Videos\AttachAction;
+use App\Actions\Videos\UploadAction;
 use App\Actions\Weapons\CreateAction;
 use App\Actions\Weapons\DeleteAction;
 use App\Actions\Weapons\UpdateAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Videos\AttachRequest;
+use App\Http\Requests\Admin\Videos\UploadRequest;
 use App\Http\Requests\Admin\Weapons\CreateRequest;
 use App\Http\Requests\Admin\Weapons\UpdateRequest;
 use App\Http\Resources\Admin\VideoResource;
 use App\Http\Resources\Admin\WeaponResource;
+use App\Models\Video;
 use App\Models\Weapon;
 use App\Repositories\Admin\VideosRepository;
 use Illuminate\Http\JsonResponse;
@@ -24,16 +29,18 @@ class VideosController extends Controller
         $this->repository = $repository;
     }
 
-    public function related()
-    {
-
-    }
-
     public function index(): AnonymousResourceCollection
     {
         $videos = $this->repository->getItemsPaginate();
 
         return VideoResource::collection($videos);
+    }
+
+    public function upload(UploadRequest $request, UploadAction $action)
+    {
+        $video = $action->run($request->getModel(), $request);
+
+        return new VideoResource($video);
     }
 
     public function store(CreateRequest $request, CreateAction $action): WeaponResource
@@ -43,11 +50,16 @@ class VideosController extends Controller
         return new WeaponResource($tag);
     }
 
-    public function show(Weapon $weapon): WeaponResource
+    public function show(Video $video): VideoResource
     {
-        $weapon->load('picture', 'countries');
+        return new VideoResource($video);
+    }
 
-        return new WeaponResource($weapon);
+    public function attach(AttachRequest $request, AttachAction $action): JsonResponse
+    {
+        $action->run($request->getModel(), $request->getVideo());
+
+        return $this->json([]);
     }
 
     public function update(Weapon $weapon, UpdateRequest $request, UpdateAction $action)

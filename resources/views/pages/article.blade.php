@@ -10,6 +10,14 @@
         <img src="{{ $article->getPicture() }}" alt="{{ $article->t('title') }}">
     </figure>
 
-    {!! $article->t('description') !!}
+    <hr>
+
+    @if($article->t('description'))
+        {!! $article->t('description') !!}
+
+        <hr>
+    @endif
+
+    @include('parts.videos', ['videos' => $article->videos])
 
 @endsection

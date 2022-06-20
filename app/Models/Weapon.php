@@ -2,22 +2,20 @@
 
 namespace App\Models;
 
-use App\Models\Traits\PictureTrait;
+use App\Models\Contracts\HasPictureContract;
+use App\Models\Contracts\HasVideoContract;
+use App\Models\Traits\HasVideos;
+use App\Models\Traits\HasPicture;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Weapon extends Model
+class Weapon extends Model implements HasVideoContract, HasPictureContract
 {
-    use PictureTrait;
+    use HasPicture;
+    use HasVideos;
 
     public function countries(): BelongsToMany
     {
         return $this->morphToMany(Country::class, 'model', 'country_relation');
-    }
-
-    public function videos(): MorphToMany
-    {
-        return $this->morphToMany(Video::class, 'related', 'video_relations');
     }
 
     public function getUrl(): string

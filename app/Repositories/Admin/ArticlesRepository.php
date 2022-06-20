@@ -7,8 +7,10 @@ use App\Models\Article;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class ArticlesRepository
+class ArticlesRepository extends AdminRepository
 {
+    protected string $model = Article::class;
+
     public function getArticles(): LengthAwarePaginator
     {
         return Article::with('tags', 'user')

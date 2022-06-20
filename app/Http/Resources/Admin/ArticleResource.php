@@ -27,9 +27,10 @@ class ArticleResource extends JsonResource
             'created_at'           => $this->created_at,
             'updated_at'           => $this->updated_at,
             'url'                  => $this->getUrl(),
-            'tags'                 => $this->whenLoaded('tags', TagResource::collection($this->tags)),
-            'user'                 => $this->whenLoaded('user', new UserResource($this->user)),
-            'picture'              => $this->whenLoaded('picture', new PictureResource($this->picture)),
+            'tags'                 => TagResource::collection($this->whenLoaded('tags')),
+            'user'                 => new UserResource($this->whenLoaded('user')),
+            'picture'              => new PictureResource($this->whenLoaded('picture')),
+            'videos'               => VideoResource::collection($this->whenLoaded('videos')),
         ];
     }
 }

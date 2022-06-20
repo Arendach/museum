@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Traits\PictureTrait;
+use App\Models\Contracts\HasPictureContract;
+use App\Models\Traits\HasPicture;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class People extends Model
+class People extends Model implements HasPictureContract
 {
     use HasFactory;
-    use PictureTrait;
+    use HasPicture;
 
     protected $table = 'peoples';
 

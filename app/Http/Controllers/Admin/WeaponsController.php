@@ -39,7 +39,7 @@ class WeaponsController extends Controller
 
     public function show(Weapon $weapon): WeaponResource
     {
-        $weapon->load('picture', 'countries');
+        $weapon->load('picture', 'countries', 'videos');
 
         return new WeaponResource($weapon);
     }

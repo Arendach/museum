@@ -6,7 +6,7 @@ use App\Http\Requests\Admin\Articles\ChangePictureRequest;
 use App\Models\Article;
 use App\Models\Picture;
 use App\Tasks\Pictures\OptimizationPictureTask;
-use App\Tasks\Pictures\UploadPictureTask;
+use App\Tasks\Pictures\UploadVideoTask;
 use Illuminate\Http\UploadedFile;
 
 class ChangePictureAction
@@ -17,7 +17,7 @@ class ChangePictureAction
         $picture = $request->picture;
 
         $alt = $picture->getClientOriginalName();
-        $path = app(UploadPictureTask::class)->run($picture);
+        $path = app(UploadVideoTask::class)->run($picture);
 
         $article->picture()->updateOrCreate(['is_main' => true], compact('path', 'alt'));
 

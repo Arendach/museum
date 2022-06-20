@@ -39,5 +39,8 @@ Route::post('people/create', [PeoplesController::class, 'create'])->name('api.ad
 
 Route::get('videos', [VideosController::class, 'index']);
 Route::get('videos/related', [VideosController::class, 'related'])->name('api.admin.videos.related');
+Route::post('videos/upload', [VideosController::class, 'upload'])->name('api.admin.videos.upload');
+Route::get('videos/{video}', [VideosController::class, 'show'])->name('api.admin.videos.show');
+Route::put('videos/attach', [VideosController::class, 'attach'])->name('api.admin.video.attach');
 
 Route::post('pictures/change', [PicturesController::class, 'change']);

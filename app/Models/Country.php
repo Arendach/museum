@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Traits\PictureTrait;
+use App\Models\Contracts\HasPictureContract;
+use App\Models\Traits\HasPicture;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Country extends Model
+class Country extends Model implements HasPictureContract
 {
     use HasFactory;
-    use PictureTrait;
+    use HasPicture;
 
     protected $guarded = [];
     public $timestamps = false;

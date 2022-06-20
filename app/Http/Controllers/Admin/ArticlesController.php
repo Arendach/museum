@@ -28,14 +28,14 @@ class ArticlesController extends Controller
 
     public function getArticles(): AnonymousResourceCollection
     {
-        $articles = $this->repository->getArticles();
+        $articles = $this->repository->with('tags', 'user', 'picture', 'videos')->getItemsPaginate();
 
         return ArticleResource::collection($articles);
     }
 
     public function getArticle(Article $article): ArticleResource
     {
-        $article->load('user', 'tags', 'picture');
+        $article->load('user', 'tags', 'picture', 'videos');
 
         return new ArticleResource($article);
     }

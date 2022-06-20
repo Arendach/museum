@@ -13,4 +13,9 @@
 
     {!! $weapon->t('description') !!}
 
+    @include('parts.videos', ['videos' => $weapon->videos])
+
+    @include('parts.comments')
+
+
 @endsection
