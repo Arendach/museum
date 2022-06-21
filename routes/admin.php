@@ -44,3 +44,4 @@ Route::get('videos/{video}', [VideosController::class, 'show'])->name('api.admin
 Route::put('videos/attach', [VideosController::class, 'attach'])->name('api.admin.video.attach');
 
 Route::post('pictures/change', [PicturesController::class, 'change']);
+Route::post('pictures/upload', [PicturesController::class, 'upload']);
