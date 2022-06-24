@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ArticlesController;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CountriesController;
 use App\Http\Controllers\Admin\PeoplesController;
 use App\Http\Controllers\Admin\PicturesController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\Admin\VideosController;
 use App\Http\Controllers\Admin\WeaponsController;
+
+Route::get('me', [AuthController::class, 'me']);
 
 Route::get('articles', [ArticlesController::class, 'getArticles'])->name('api.admin.articles');
 Route::get('articles/{article}', [ArticlesController::class, 'getArticle'])->name('api.admin.article');
