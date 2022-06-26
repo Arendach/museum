@@ -2,59 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Actions\Weapons\CreateAction;
-use App\Actions\Weapons\DeleteAction;
+use App\Actions\Weapons\StoreAction;
 use App\Actions\Weapons\UpdateAction;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Weapons\CreateRequest;
+use App\Http\Requests\Admin\Weapons\StoreRequest;
 use App\Http\Requests\Admin\Weapons\UpdateRequest;
 use App\Http\Resources\Admin\WeaponResource;
-use App\Models\Weapon;
 use App\Repositories\Admin\WeaponsRepository;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class WeaponsController extends Controller
+class WeaponsController extends AdminController
 {
-    private WeaponsRepository $repository;
-
-    public function __construct(WeaponsRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    public function index(): AnonymousResourceCollection
-    {
-        $tags = $this->repository->with('countries', 'picture')->getItems();
-
-        return WeaponResource::collection($tags);
-    }
-
-    public function store(CreateRequest $request, CreateAction $action): WeaponResource
-    {
-        $tag = $action->run($request);
-
-        return new WeaponResource($tag);
-    }
-
-    public function show(Weapon $weapon): WeaponResource
-    {
-        $weapon->load('picture', 'countries', 'videos');
-
-        return new WeaponResource($weapon);
-    }
-
-    public function update(Weapon $weapon, UpdateRequest $request, UpdateAction $action)
-    {
-        $success = $action->run($weapon, $request);
-
-        return $this->json(compact('success'));
-    }
-
-    public function destroy(Weapon $weapon, DeleteAction $action): JsonResponse
-    {
-        $success = $action->run($weapon);
-
-        return $this->json(compact('success'));
-    }
+    protected string $repository = WeaponsRepository::class;
+    protected string $resource = WeaponResource::class;
+    protected string $storeRequest = StoreRequest::class;
+    protected string $storeAction = StoreAction::class;
+    protected string $updateAction = UpdateAction::class;
+    protected string $updateRequest = UpdateRequest::class;
+    protected array $with = ['countries', 'picture', 'videos'];
 }

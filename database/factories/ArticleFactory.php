@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Seo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -25,6 +26,7 @@ class ArticleFactory extends Factory
             'updated_at'           => now(),
             'user_id'              => 1,
             'slug'                 => Str::slug($this->faker->text(rand(15, 45))),
+            'seo'                  => Seo::factory()->create(),
         ];
     }
 }

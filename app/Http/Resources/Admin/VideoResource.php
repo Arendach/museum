@@ -27,6 +27,7 @@ class VideoResource extends JsonResource
             'source_title'    => $this->source_title,
             'source_title_ru' => $this->source_title_ru,
             'source_title_en' => $this->source_title_en,
+            'seo'             => new SeoResource($this->whenLoaded('seo')),
         ];
     }
 }

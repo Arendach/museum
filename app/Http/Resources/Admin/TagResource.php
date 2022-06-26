@@ -19,6 +19,7 @@ class TagResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'url'        => $this->getUrl(),
+            'seo'        => new SeoResource($this->whenLoaded('seo')),
         ];
     }
 }

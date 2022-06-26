@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model as BaseModel;
 use Symfony\Component\DomCrawler\Crawler;
 
-class Model extends BaseModel
+abstract class Model extends BaseModel
 {
     protected $guarded = [];
     public $timestamps = false;

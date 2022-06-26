@@ -4,17 +4,22 @@ namespace App\Models;
 
 use App\Models\Contracts\HasPictureContract;
 use App\Models\Traits\HasPicture;
+use App\Models\Traits\HasSeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Country extends Model implements HasPictureContract
 {
-    use HasFactory;
-    use HasPicture;
+    use HasFactory,
+        HasPicture,
+        HasSeo;
 
     protected $guarded = [];
     public $timestamps = false;
+    protected $casts = [
+        'is_top' => 'boolean',
+    ];
 
     public function weapons(): MorphToMany
     {

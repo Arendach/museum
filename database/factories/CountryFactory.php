@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Seo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -18,7 +19,8 @@ class CountryFactory extends Factory
             'description_ru' => $this->faker->text(rand(100, 200)),
             'description_en' => $this->faker->text(rand(100, 200)),
             'status'         => ['friend', 'enemy', 'neutral'][rand(0, 2)],
-            'code'           => $this->faker->countryCode
+            'code'           => $this->faker->countryCode,
+            'seo'            => Seo::factory()->create(),
         ];
     }
 }

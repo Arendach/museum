@@ -9,9 +9,17 @@ class UpdateAction
 {
     public function run(Article $article, UpdateRequest $request): bool
     {
-        $article->update($request->getData());
+        $article->update(
+            $request->getData()
+        );
 
-        $article->tags()->sync($request->getTags());
+        $article->updateTags(
+            $request->getTags()
+        );
+
+        $article->updateSeo(
+            $request->getSeo()
+        );
 
         return true;
     }

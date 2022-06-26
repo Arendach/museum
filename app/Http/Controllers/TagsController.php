@@ -23,12 +23,12 @@ class TagsController extends Controller
         return TagResource::collection($tags);
     }
 
-    public function showTag(string $slug): View
+    public function index(string $slug): View
     {
-        $tag = $this->repository->findTag($slug);
+        $page = $this->repository->findTag($slug);
 
-        abort_if(!$tag, 404);
+        abort_if(!$page, 404);
 
-        return view('pages.tag', compact('tag'));
+        return view('pages.tag', compact('page'));
     }
 }

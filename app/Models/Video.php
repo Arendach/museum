@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasSeo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Str;
 
 class Video extends Model
 {
+    use HasFactory,
+        HasSeo;
+
     public $timestamps = true;
 
     public function getUrl(): string

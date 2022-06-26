@@ -2,12 +2,12 @@
 
 namespace App\Actions\Weapons;
 
-use App\Http\Requests\Admin\Weapons\CreateRequest;
+use App\Http\Requests\Admin\Weapons\StoreRequest;
 use App\Models\Weapon;
 
-class CreateAction
+class StoreAction
 {
-    public function run(CreateRequest $request): Weapon
+    public function run(StoreRequest $request): Weapon
     {
         $weapon = Weapon::create($request->getData());
 

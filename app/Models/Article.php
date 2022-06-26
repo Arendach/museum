@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Contracts\HasPictureContract;
 use App\Models\Contracts\HasVideoContract;
+use App\Models\Traits\HasSeo;
+use App\Models\Traits\HasTags;
 use App\Models\Traits\HasVideos;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,9 +14,11 @@ use App\Models\Traits\HasPicture;
 
 class Article extends Model implements HasVideoContract, HasPictureContract
 {
-    use HasFactory;
-    use HasPicture;
-    use HasVideos;
+    use HasFactory,
+        HasPicture,
+        HasVideos,
+        HasSeo,
+        HasTags;
 
     public $timestamps = true;
 
@@ -22,11 +26,6 @@ class Article extends Model implements HasVideoContract, HasPictureContract
         'is_active'  => 'boolean',
         'is_popular' => 'boolean',
     ];
-
-    public function tags(): MorphToMany
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
 
     public function user(): BelongsTo
     {
@@ -41,5 +40,10 @@ class Article extends Model implements HasVideoContract, HasPictureContract
     public function getUrl(): string
     {
         return route('article', [$this->slug]);
+    }
+
+    public function breadcrumbs(): array
+    {
+        return [[$this->t('title')]];
     }
 }

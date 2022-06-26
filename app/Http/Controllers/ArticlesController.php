@@ -30,15 +30,12 @@ class ArticlesController extends Controller
         return new ArticleResource($article);
     }
 
-    public function showArticle(string $slug): View
+    public function index(string $slug): View
     {
-        $article = $this->repository->findArticle($slug);
+        $page = $this->repository->findArticle($slug);
 
-        abort_if(!$article, 404);
+        abort_if(!$page, 404);
 
-        $title = $article->t('title');
-        $breadcrumbs = [[$title]];
-
-        return view('pages.article', compact('article', 'title', 'breadcrumbs'));
+        return view('pages.article', compact('page'));
     }
 }

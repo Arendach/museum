@@ -3,22 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\Quote;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repositories\Admin\AdminRepository;
 
-class QuotesRepository
+class QuotesRepository extends AdminRepository
 {
-    public function getQuotes(): LengthAwarePaginator
-    {
-        return Quote::with('people')
-            ->orderBy('id', 'desc')
-            ->paginate(
-                request()->getPaginationLimit()
-            );
-    }
-
-    public function getQuote(int $id): Quote|Model|null
-    {
-        return Quote::with('people')->where('id', $id)->first();
-    }
+    protected string $model = Quote::class;
 }

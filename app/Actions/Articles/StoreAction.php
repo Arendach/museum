@@ -2,12 +2,12 @@
 
 namespace App\Actions\Articles;
 
-use App\Http\Requests\Admin\Articles\CreateRequest;
+use App\Http\Requests\Admin\Articles\StoreRequest;
 use App\Models\Article;
 
-class CreateAction
+class StoreAction
 {
-    public function run(CreateRequest $request): Article
+    public function run(StoreRequest $request): Article
     {
         $article = Article::create(
             $request->getData()
@@ -16,6 +16,8 @@ class CreateAction
         $article->tags()->attach(
             $request->getTags()
         );
+
+        $article->seo()->create();
 
         return $article;
     }

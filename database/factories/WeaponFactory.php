@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Seo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -17,7 +18,8 @@ class WeaponFactory extends Factory
             'description_ru' => $this->faker->text(rand(180, 200)),
             'description_en' => $this->faker->text(rand(180, 200)),
             'slug'           => Str::slug($this->faker->text(rand(15, 45))),
-            'date'           => '2022-06-11'
+            'date'           => '2022-06-11',
+            'seo'            => Seo::factory()->create(),
         ];
     }
 }

@@ -10,7 +10,10 @@ class UpdateRequest extends ApiRequest
     public function rules(): array
     {
         return [
-            'slug'                 => ['required', Rule::unique('articles', 'slug')->ignore($this->route('article'))],
+            'slug'                 => [
+                'required',
+                Rule::unique('articles', 'slug')->ignore($this->route('id'))
+            ],
             'title'                => 'required|max:255',
             'title_ru'             => 'nullable|max:255',
             'title_en'             => 'nullable|max:255',
@@ -20,15 +23,11 @@ class UpdateRequest extends ApiRequest
             'description'          => 'nullable',
             'description_ru'       => 'nullable',
             'description_en'       => 'nullable',
-            'tags'                 => ['nullable', 'array'],
+            'tags'                 => 'nullable|array',
             'is_active'            => 'bool',
-            'is_popular'            => 'bool',
+            'is_popular'           => 'bool',
+            'seo'                  => 'nullable|array',
         ];
-    }
-
-    public function getTags(): array
-    {
-        return $this->get('tags') ?: [];
     }
 
     public function getData(): array

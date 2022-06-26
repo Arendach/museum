@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QuotesSeeder::class);
         $this->call(WeaponSeeder::class);
         $this->call(VideoSeeder::class);
+        $this->call(PagesSeeder::class);
     }
 }

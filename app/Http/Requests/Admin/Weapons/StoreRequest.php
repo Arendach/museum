@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin\Weapons;
 use App\Http\Requests\ApiRequest;
 use Str;
 
-class CreateRequest extends ApiRequest
+class StoreRequest extends ApiRequest
 {
     public function rules(): array
     {

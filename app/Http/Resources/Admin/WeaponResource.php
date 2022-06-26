@@ -24,6 +24,7 @@ class WeaponResource extends JsonResource
             'picture'        => new PictureResource($this->whenLoaded('picture')),
             'countries'      => CountryResource::collection($this->whenLoaded('countries')),
             'videos'         => VideoResource::collection($this->whenLoaded('videos')),
+            'seo'            => new SeoResource($this->whenLoaded('seo')),
         ];
     }
 }

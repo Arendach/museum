@@ -2,6 +2,8 @@
 
 @section('content')
 
-    tag name -> <b>{{ $tag->t('title') }}</b>
+    <h2>
+        {{ $page->t('title') }}
+    </h2>
 
 @endsection

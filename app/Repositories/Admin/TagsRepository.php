@@ -3,16 +3,8 @@
 namespace App\Repositories\Admin;
 
 use App\Models\Tag;
-use Illuminate\Support\Collection;
-use Request;
 
-class TagsRepository
+class TagsRepository extends AdminRepository
 {
-    public function getTags(): Collection
-    {
-        return Tag::orderBy(
-            Request::getOrderField(),
-            Request::getOrderDirection(),
-        )->get();
-    }
+    protected string $model = Tag::class;
 }

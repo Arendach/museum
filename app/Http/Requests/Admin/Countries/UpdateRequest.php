@@ -16,11 +16,16 @@ class UpdateRequest extends ApiRequest
             'description'    => 'nullable',
             'description_ru' => 'nullable',
             'description_en' => 'nullable',
-            'code'           => 'required|string',
+            'code'           => [
+                'required',
+                'string',
+                Rule::unique('countries', 'code')->ignore($this->route('id'))
+            ],
             'status'         => 'required',
+            'is_top'         => 'boolean',
             'slug'           => [
                 'required',
-                Rule::unique('countries', 'slug')->ignore($this->route('country'))
+                Rule::unique('countries', 'slug')->ignore($this->route('id'))
             ],
         ];
     }

@@ -3,18 +3,18 @@
 @section('content')
 
     <h1>
-        {{ $country->t('title') }}
+        {{ $page->t('title') }}
     </h1>
 
     <hr>
 
     <figure>
-        <img src="{{ $country->getPicture() }}" alt="">
+        <img src="{{ $page->getPicture() }}" alt="">
     </figure>
 
-    {!! $country->t('description') !!}
+    {!! $page->t('description') !!}
 
-    @if($country->weapons->count())
+    @if($page->weapons->count())
         <div class="blog-area pt-80 pb-50">
             <div class="container">
                 <div class="section-title text-center mb-40">
@@ -23,7 +23,7 @@
                     </h2>
                 </div>
                 <div class="row">
-                    @foreach($country->weapons as $weapon)
+                    @foreach($page->weapons as $weapon)
                         <div class="col-lg-6 col-md-6 col-sm-12 mb-30">
                             <div class="blog-item">
                                 <h3>
@@ -58,36 +58,38 @@
     @endif
 
 
-    <div class="team-area pt-80 pb-50">
-        <div class="container">
-            <div class="section-title text-center mb-40">
-                <h2>
-                    {!! translate('<span><strong>Люди</strong> країни</span>') !!}
-                </h2>
-            </div>
-            <div class="row">
-                @foreach($country->peoples as $people)
-                    <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
-                        <div class="single-member-wrapper">
-                            <div class="member-image">
-                                <picture>
-                                    <img src="{{ $people->getPicture() }}" class="img-fluid" alt="{{ $people->t('name') }}">
-                                </picture>
-                                <div class="member-hover"></div>
-                            </div>
-                            <div class="member-details">
-                                <h3>
-                                    <a href="{{ $people->getUrl() }}">
-                                        {{ $people->t('name') }}
-                                    </a>
-                                </h3>
+    @if($page->peoples->count())
+        <div class="team-area pt-80 pb-50">
+            <div class="container">
+                <div class="section-title text-center mb-40">
+                    <h2>
+                        {!! translate('<span><strong>Люди</strong> країни</span>') !!}
+                    </h2>
+                </div>
+                <div class="row">
+                    @foreach($page->peoples as $people)
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-30">
+                            <div class="single-member-wrapper">
+                                <div class="member-image">
+                                    <picture>
+                                        <img src="{{ $people->getPicture() }}" class="img-fluid"
+                                             alt="{{ $people->t('name') }}">
+                                    </picture>
+                                    <div class="member-hover"></div>
+                                </div>
+                                <div class="member-details">
+                                    <h3>
+                                        <a href="{{ $people->getUrl() }}">
+                                            {{ $people->t('name') }}
+                                        </a>
+                                    </h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
-
+    @endif
 
 @endsection

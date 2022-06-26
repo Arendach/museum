@@ -31,6 +31,7 @@ class ArticleResource extends JsonResource
             'user'                 => new UserResource($this->whenLoaded('user')),
             'picture'              => new PictureResource($this->whenLoaded('picture')),
             'videos'               => VideoResource::collection($this->whenLoaded('videos')),
+            'seo'                  => new SeoResource($this->whenLoaded('seo')),
         ];
     }
 }

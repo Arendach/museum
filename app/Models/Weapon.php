@@ -4,14 +4,16 @@ namespace App\Models;
 
 use App\Models\Contracts\HasPictureContract;
 use App\Models\Contracts\HasVideoContract;
+use App\Models\Traits\HasSeo;
 use App\Models\Traits\HasVideos;
 use App\Models\Traits\HasPicture;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Weapon extends Model implements HasVideoContract, HasPictureContract
 {
-    use HasPicture;
-    use HasVideos;
+    use HasPicture,
+        HasVideos,
+        HasSeo;
 
     public function countries(): BelongsToMany
     {

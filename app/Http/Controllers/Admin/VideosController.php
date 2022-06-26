@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Actions\Videos\AttachAction;
 use App\Actions\Videos\UploadAction;
-use App\Actions\Weapons\CreateAction;
+use App\Actions\Weapons\StoreAction;
 use App\Actions\Weapons\DeleteAction;
 use App\Actions\Weapons\UpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Videos\AttachRequest;
 use App\Http\Requests\Admin\Videos\UploadRequest;
-use App\Http\Requests\Admin\Weapons\CreateRequest;
+use App\Http\Requests\Admin\Weapons\StoreRequest;
 use App\Http\Requests\Admin\Weapons\UpdateRequest;
 use App\Http\Resources\Admin\VideoResource;
 use App\Http\Resources\Admin\WeaponResource;
@@ -43,7 +43,7 @@ class VideosController extends Controller
         return new VideoResource($video);
     }
 
-    public function store(CreateRequest $request, CreateAction $action): WeaponResource
+    public function store(StoreRequest $request, StoreAction $action): WeaponResource
     {
         $tag = $action->run($request);
 

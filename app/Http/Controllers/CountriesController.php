@@ -15,13 +15,13 @@ class CountriesController extends Controller
         $this->repository = $repository;
     }
 
-    public function index(Country $country): View
+    public function index(Country $page): View
     {
-        $country->load('weapons', 'peoples', 'weapons.picture', 'peoples.picture');
+        $page->load('weapons', 'peoples', 'weapons.picture', 'peoples.picture', 'seo');
 
-        $title = $country->t('title');
+        $title = $page->t('title');
         $breadcrumbs = [[$title]];
 
-        return view('pages.country', compact('country', 'title', 'breadcrumbs'));
+        return view('pages.country', compact('page', 'title', 'breadcrumbs'));
     }
 }

@@ -3,15 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\People;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Repositories\Admin\AdminRepository;
 
-class PeoplesRepository
+class PeoplesRepository extends AdminRepository
 {
-    public function getPeoples(): LengthAwarePaginator
-    {
-        return People::orderByDesc('id')
-            ->paginate(
-                request()->getPaginationLimit()
-            );
-    }
+    protected string $model = People::class;
 }
