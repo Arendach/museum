@@ -14,7 +14,8 @@ class UpdateRequest extends ApiRequest
             'title'    => 'required|max:255',
             'title_ru' => 'nullable|max:255',
             'title_en' => 'nullable|max:255',
-            'slug'     => ['required', Rule::unique('tags', 'slug')->ignore($this->route('tag'))],
+            'slug'     => ['required', Rule::unique('tags', 'slug')->ignore($this->route('id'))],
+            'seo'      => 'array',
         ];
     }
 
