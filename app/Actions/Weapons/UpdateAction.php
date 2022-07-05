@@ -11,6 +11,8 @@ class UpdateAction
     {
         $weapon->countries()->sync($request->getCountries());
 
+        $weapon->updateSeo($request->getSeo());
+
         return $weapon->update($request->getData());
     }
 }

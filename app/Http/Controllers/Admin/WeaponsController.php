@@ -17,5 +17,5 @@ class WeaponsController extends AdminController
     protected string $storeAction = StoreAction::class;
     protected string $updateAction = UpdateAction::class;
     protected string $updateRequest = UpdateRequest::class;
-    protected array $with = ['countries', 'picture', 'videos'];
+    protected array $with = ['countries', 'picture', 'videos', 'seo'];
 }

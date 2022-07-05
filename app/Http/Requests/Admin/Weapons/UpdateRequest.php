@@ -16,7 +16,7 @@ class UpdateRequest extends ApiRequest
             'description'    => 'nullable',
             'description_ru' => 'nullable',
             'description_en' => 'nullable',
-            'slug'           => ['required', Rule::unique('weapons', 'slug')->ignore($this->route('weapon'))],
+            'slug'           => ['required', Rule::unique('weapons', 'slug')->ignore($this->route('id'))],
             'countries'      => 'nullable|array',
             'date'           => 'string|max:255',
         ];
