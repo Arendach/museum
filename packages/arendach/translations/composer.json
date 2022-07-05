@@ -1,0 +1,21 @@
+{
+    "name": "arendach/translations",
+    "description": "Translations by GoogleAPI",
+    "type": "library",
+    "require": {
+        "stichoza/google-translate-php": "dev-master"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Arendach\\Translations\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Arendach Taras",
+            "email": "arendach.taras@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

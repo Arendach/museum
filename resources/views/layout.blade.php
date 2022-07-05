@@ -10,6 +10,7 @@
     <meta name="robots" content="{{ $page->seoFollow() }}">
     <meta name="description" content="{{ $page->seoDescription() }}">
     <meta name="keywords" content="{{ $page->seoKeywords() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- [ Favicon ] --}}
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
@@ -22,6 +23,12 @@
 
     {{-- [ Styles ] --}}
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    {{-- [ Translations ] --}}
+    @if(file_exists(public_path('translations/' . app()->getLocale() . '.js')))
+        <script
+            src="{{ asset('translations/' . app()->getLocale() . '.js') }}?v="{{ Cache::rememberForever('translation_key', fn() => Str::random(6)) }}></script>
+    @endif
 </head>
 
 <body>
@@ -95,6 +102,8 @@
 </div>
 
 @include('parts.footer')
+
+@yield('scripts')
 
 </body>
 </html>

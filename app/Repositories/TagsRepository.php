@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Tag;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
@@ -20,10 +18,10 @@ class TagsRepository
         return Tag::all();
     }
 
-    public function findTag(string $slug): Builder|Model|Tag|null
+    public function findTag(string $slug): Tag
     {
-        return Tag::with('articles')
-            ->where('slug', $slug)
-            ->first();
+        return Tag::where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
     }
 }

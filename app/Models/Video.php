@@ -3,13 +3,17 @@
 namespace App\Models;
 
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\HasTags;
+use App\Models\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Str;
 
 class Video extends Model
 {
     use HasFactory,
-        HasSeo;
+        HasSeo,
+        Searchable,
+        HasTags;
 
     public $timestamps = true;
 

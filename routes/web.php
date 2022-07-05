@@ -19,7 +19,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
     Route::get('/', [HomeController::class, 'home'])->name('home');
     Route::get('user/{id}', [UsersController::class, 'showUser'])->name('user');
     Route::get('article/{slug}', [ArticlesController::class, 'index'])->name('article');
-    Route::get('tag/{slug}', [TagsController::class, 'index'])->name('tag');
+    Route::get('tag/{slug}', [TagsController::class, 'show'])->name('tag');
     Route::get('country/{page:slug}', [CountriesController::class, 'index'])->name('country');
     Route::get('weapon/{page:slug}', [WeaponsController::class, 'index'])->name('weapon');
     Route::get('people/{people}', [PeoplesController::class, 'index'])->name('people');

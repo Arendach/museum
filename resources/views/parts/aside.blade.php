@@ -17,20 +17,22 @@
         </div>
     </div>
 
-    <div class="blog-aside-item mb-40">
-        <div class="blog-aside-item-inner">
-            <h4 class="widget-title">{{ translate('Країни') }}</h4>
-            <ul class="category-list">
-                @foreach($countries as $country)
-                    <li class="{{ false ? 'active' : '' }}">
-                        <a href="{{ $country->getUrl() }}">
-                            {{ $country->t('title') }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
+    @if($countries->count())
+        <div class="blog-aside-item mb-40">
+            <div class="blog-aside-item-inner">
+                <h4 class="widget-title">{{ translate('Країни') }}</h4>
+                <ul class="category-list">
+                    @foreach($countries as $country)
+                        <li class="{{ false ? 'active' : '' }}">
+                            <a href="{{ $country->getUrl() }}">
+                                {{ $country->t('title') }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
-    </div>
+    @endif
 
     @if($popularArticles->count())
         <div class="blog-aside-item mb-40">

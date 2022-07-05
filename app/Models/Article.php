@@ -7,6 +7,7 @@ use App\Models\Contracts\HasVideoContract;
 use App\Models\Traits\HasSeo;
 use App\Models\Traits\HasTags;
 use App\Models\Traits\HasVideos;
+use App\Models\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -18,7 +19,8 @@ class Article extends Model implements HasVideoContract, HasPictureContract
         HasPicture,
         HasVideos,
         HasSeo,
-        HasTags;
+        HasTags,
+        Searchable;
 
     public $timestamps = true;
 
