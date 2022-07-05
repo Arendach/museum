@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Contracts\HasPictureContract;
 use App\Models\Traits\HasPicture;
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -13,7 +14,8 @@ class Country extends Model implements HasPictureContract
 {
     use HasFactory,
         HasPicture,
-        HasSeo;
+        HasSeo,
+        Searchable;
 
     protected $guarded = [];
     public $timestamps = false;

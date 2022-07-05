@@ -20,6 +20,11 @@ trait HasPicture
         return $this->morphMany(Picture::class, 'model')->where('is_main', false);
     }
 
+    public function hasPicture(): bool
+    {
+        return !!$this->picture?->path;
+    }
+
     public function getPicture(): ?string
     {
         return asset($this->picture?->path ?: 'img/blog/list-img-1.jpg');

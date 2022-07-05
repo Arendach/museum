@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasPicture;
 use App\Models\Traits\HasSeo;
+use App\Models\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
 class Tag extends Model
 {
     use HasFactory,
-        HasSeo;
+        HasSeo,
+        HasPicture,
+        Searchable;
 
     public $timestamps = true;
 

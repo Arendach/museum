@@ -5,10 +5,13 @@ namespace App\Actions\Tags;
 use App\Models\Tag;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class GetVideosAction
+class GetArticlesAction
 {
     public function run(Tag $tag): LengthAwarePaginator
     {
-        return $tag->videos()->paginate(10);
+        return $tag
+            ->articles()
+            ->with(['user', 'picture'])
+            ->paginate(10);
     }
 }

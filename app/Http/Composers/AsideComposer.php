@@ -21,12 +21,14 @@ class AsideComposer
 
     public function getTags(): Collection
     {
-        return Tag::all();
+        return Tag::where('is_active', true)
+            ->where('is_top', true)
+            ->get();
     }
 
     public function getCountries(): Collection
     {
-        return Country::all();
+        return Country::where('is_top', true)->get();
     }
 
     public function getPopularArticles(): Collection
