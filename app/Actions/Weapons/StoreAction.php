@@ -13,6 +13,8 @@ class StoreAction
 
         $weapon->countries()->sync($request->getCountries());
 
+        $weapon->seo()->create([]);
+
         return $weapon;
     }
 }

@@ -28,7 +28,9 @@ class AsideComposer
 
     public function getCountries(): Collection
     {
-        return Country::where('is_top', true)->get();
+        return Country::where('is_active', true)
+            ->where('is_top', true)
+            ->get();
     }
 
     public function getPopularArticles(): Collection

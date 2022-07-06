@@ -22,8 +22,10 @@ class CountryResource extends JsonResource
             'slug'           => $this->slug,
             'status'         => $this->status,
             'is_top'         => $this->is_top,
+            'is_active'      => $this->is_active,
             'url'            => $this->getUrl(),
             'seo'            => new SeoResource($this->whenLoaded('seo')),
+            'picture'        => new PictureResource($this->whenLoaded('picture')),
         ];
     }
 }

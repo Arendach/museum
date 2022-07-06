@@ -13,5 +13,5 @@ class CountriesController extends AdminController
     protected string $resource = CountryResource::class;
     protected string $storeRequest = CreateRequest::class;
     protected string $updateRequest = UpdateRequest::class;
-    protected array $with = ['seo'];
+    protected array $with = ['seo', 'picture'];
 }

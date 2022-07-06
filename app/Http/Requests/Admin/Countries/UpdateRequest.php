@@ -23,6 +23,7 @@ class UpdateRequest extends ApiRequest
             ],
             'status'         => 'required',
             'is_top'         => 'boolean',
+            'is_active'      => 'boolean',
             'slug'           => [
                 'required',
                 Rule::unique('countries', 'slug')->ignore($this->route('id'))

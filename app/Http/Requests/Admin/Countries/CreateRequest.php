@@ -20,6 +20,7 @@ class CreateRequest extends ApiRequest
             'status'         => 'required',
             'slug'           => 'nullable|unique:countries,slug',
             'is_top'         => 'boolean',
+            'is_active'      => 'boolean',
         ];
     }
 

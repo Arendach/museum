@@ -1,3 +1,4 @@
+@php /** @var \App\Models\Country $page */ @endphp
 @extends('layout')
 
 @section('content')
@@ -9,7 +10,7 @@
     <hr>
 
     <figure>
-        <img src="{{ $page->getPicture() }}" alt="">
+        <img src="{{ $page->getPicture() }}" alt="{{ $page->t('title') }}">
     </figure>
 
     {!! $page->t('description') !!}
