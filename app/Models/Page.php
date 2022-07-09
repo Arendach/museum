@@ -14,4 +14,9 @@ class Page extends Model
 
     protected $table = 'pages';
     public $timestamps = true;
+
+    public function getUrl(): string
+    {
+        return route('page', [$this->slug]);
+    }
 }

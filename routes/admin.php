@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\ArticlesController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CountriesController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\PeoplesController;
 use App\Http\Controllers\Admin\PicturesController;
 use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\Admin\TagsController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\VideosController;
 use App\Http\Controllers\Admin\WeaponsController;
 
@@ -54,6 +56,20 @@ Route::apiResource('peoples', PeoplesController::class, [
     'as'         => 'api.admin',
     'parameters' => [
         'peoples' => 'id'
+    ]
+]);
+
+Route::apiResource('pages', PagesController::class, [
+    'as'         => 'api.admin',
+    'parameters' => [
+        'pages' => 'id'
+    ]
+]);
+
+Route::apiResource('users', UsersController::class, [
+    'as'         => 'api.admin',
+    'parameters' => [
+        'users' => 'id'
     ]
 ]);
 

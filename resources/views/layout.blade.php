@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ $page->seoTitle() }}</title>
-    <meta name="robots" content="{{ $page->seoIndex() }}">
-    <meta name="robots" content="{{ $page->seoFollow() }}">
-    <meta name="description" content="{{ $page->seoDescription() }}">
-    <meta name="keywords" content="{{ $page->seoKeywords() }}">
+    <title>{{ isset($page) ? $page->seoTitle() : ($title ?? '') }}</title>
+    <meta name="robots" content="{{ isset($page) ?$page->seoIndex() : '' }}">
+    <meta name="robots" content="{{ isset($page) ?$page->seoFollow() : '' }}">
+    <meta name="description" content="{{ isset($page) ?$page->seoDescription() : '' }}">
+    <meta name="keywords" content="{{ isset($page) ?$page->seoKeywords() : '' }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- [ Favicon ] --}}
@@ -60,7 +60,7 @@
                 @endforeach
             @endif
         </ol>
-        <h1>{{ $page->seoH1() }}</h1>
+        <h1>{{ isset($page) ? $page->seoH1() : '' }}</h1>
     </div>
 </div>
 
